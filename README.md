@@ -1,6 +1,0 @@
-# fuckMAK2
-
-blablahahdhahsdhahsd
-ashfdjsadfsd
-asfdjsahfjsdf
-afnlkjsdfds

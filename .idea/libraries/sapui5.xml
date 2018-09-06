@@ -1,8 +1,0 @@
-<component name="libraryTable">
-  <library name="sapui5" type="javaScript">
-    <CLASSES>
-      <root url="file://T:/Dozenten/ABAP/Open UI5/ui5-sdk-1.54.8/resources/sap-ui-core.js" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>
