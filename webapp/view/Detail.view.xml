@@ -1,0 +1,28 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+        controllerName='de.nak.minibar.controller.Detail'>
+    <Page
+            title="{i18n>detail.PageTitel}"
+            showNavButton="true"
+            navButtonPress="onNavButtonPress">
+        <content>
+            <Toolbar>
+                <Title text="{i18n>detail.titel}" level="H2"/>
+            </Toolbar>
+            <f:SimpleForm
+
+                    layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="{i18n>Name}" labelFor="inputName"/>
+                    <Input id="inputName" value="{minibar>Name}" enabled="false"/>
+                    <Label text="{i18n>Text}" labelFor="inputText"/>
+                    <TextArea id="inputText" value="{minibar>Text}" width="100%" enabled="false"/>
+                    <Label text="{i18n>Date}" labelFor="inputDate"/>
+                    <Input id="inputDate" value="{minibar>Datum}" enabled="false"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

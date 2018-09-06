@@ -1,0 +1,88 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "de.nak.minibar",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "minibarService":{
+        "uri": "https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_ODATA_MINIBAR_SRV/",
+        "type": "OData",
+        "settings":{
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_belize"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": "de.nak.minibar.view.App",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "de.nak.minibar.view",
+        "controlId": "app",
+        "controlAggregation": "pages"
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "main",
+          "target": "main"
+        },
+        {
+          "pattern": "detail/{path}",
+          "name": "detail",
+          "target": "detail"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewName": "Main"
+        },
+        "detail": {
+          "viewName": "Detail"
+        }
+      }
+    },
+    "models":{
+      "i18n":{
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "de.nak.minibar.i18n.i18n"
+        }
+      },
+      "minibar":{
+        "dataSource": "minibarService",
+        "settings":{
+          "useBatch": false
+        }
+      }
+    }
+  }
+}

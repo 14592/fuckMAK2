@@ -1,0 +1,10 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName='de.nak.minibar.controller.App'
+          displayBlock="true">
+    <App id="app">
+
+    </App>
+</mvc:View>
+
+

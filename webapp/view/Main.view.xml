@@ -1,0 +1,29 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        controllerName='de.nak.minibar.controller.Main'>
+    <Page title="{i18n>main.PageTitle}">
+        <content>
+            <List headerText="{i18n>main.headerText}"
+                  items="{ path: 'minibar>/Text_EntitySet'}"
+                  growing="true"
+                  growingThreshold="100"
+                  enableBusyIndicator="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>mainPageText}" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <StandardListItem title="{minibar>Name}"
+                                  description="{minibar>Item}"
+
+                                  press="onItemPress"
+                                  type="Navigation"
+                />
+            </List>
+        </content>
+    </Page>
+</mvc:View>
+
+
+
