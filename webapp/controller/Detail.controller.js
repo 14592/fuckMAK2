@@ -12,9 +12,9 @@ sap.ui.define([
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
             var oView = this.getView();
-            var oContext = oView.getModel("hotel").createBindingContext("/" +
+            var oContext = oView.getModel("minibar").createBindingContext("/" +
                 oArgs.path);
-            oView.setBindingContext(oContext, "hotel");
+            oView.setBindingContext(oContext, "minibar");
         },
 
         onNavButtonPress: function () {

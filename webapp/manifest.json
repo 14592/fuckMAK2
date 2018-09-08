@@ -12,7 +12,7 @@
     },
     "dataSources": {
       "minibarService":{
-        "uri": "https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_ODATA_MINIBAR_SRV/",
+        "uri": "https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/",
         "type": "OData",
         "settings":{
           "odataVersion": "2.0"
