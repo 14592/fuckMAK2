@@ -59,6 +59,11 @@
           "pattern": "detail/{path}",
           "name": "detail",
           "target": "detail"
+        },
+        {
+          "pattern": "products/{path}",
+          "name": "products",
+          "target": "products"
         }
       ],
       "targets": {
@@ -67,6 +72,9 @@
         },
         "detail": {
           "viewName": "Detail"
+        },
+        "products": {
+          "viewName": "Products"
         }
       }
     },

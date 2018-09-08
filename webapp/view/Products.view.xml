@@ -1,0 +1,51 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+        controllerName='de.nak.minibar.controller.Products'>
+
+    <Page title="{i18n>main.PageTitle}"
+          showNavButton="true"
+          navButtonPress="onNavButtonPress">
+        <content>
+            <List headerText="{i18n>main.headerText}"
+                  items="{ path: 'minibar>/PRODUCTSet'}"
+                  growing="true"
+                  growingThreshold="100"
+                  enableBusyIndicator="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>mainPageText}" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <StandardListItem title="{minibar>Name}"
+
+                                  press="onItemPress"
+                                  type="Navigation"
+                />
+            </List>
+        </content>
+    </Page>
+    <!--<Page
+            title="{i18n>detail.PageTitel}"
+            showNavButton="true"
+            navButtonPress="onNavButtonPress">
+        <content>
+            <Toolbar>
+                <Title text="{i18n>detail.titel}" level="H2"/>
+            </Toolbar>
+            <f:SimpleForm
+
+                    layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="{i18n>Name}" labelFor="inputName"/>
+                    <Input id="inputName" value="{minibar>Name}" enabled="false"/>
+                    <Label text="{i18n>Text}" labelFor="inputText"/>
+                    <TextArea id="inputText" value="{minibar>Price}" width="100%" enabled="false"/>
+                    <Label text="{i18n>Date}" labelFor="inputDate"/>
+                    <Input id="inputDate" value="{minibar>Description}" enabled="false"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+    </Page>-->
+</mvc:View>

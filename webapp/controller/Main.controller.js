@@ -6,7 +6,7 @@ sap.ui.define([
         onItemPress: function (oEvent) {
             var oItem = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("detail", {
+            oRouter.navTo("products", {
                 path: oItem.getBindingContext("minibar").getPath().substr(1)
             });
         }

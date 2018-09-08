@@ -3,10 +3,19 @@ sap.ui.define([
     "sap/ui/core/routing/History"
 ], function (Controller, History) {
     "use strict";
-    return Controller.extend("de.nak.minibar.controller.Detail", {
+    return Controller.extend("de.nak.minibar.controller.Products", {
+
+        onItemPress: function (oEvent) {
+            var oItem = oEvent.getSource();
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("detail", {
+                path: oItem.getBindingContext("minibar").getPath().substr(1)
+            });
+        },
+
         onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched,
+            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
                 this);
         },
         _onObjectMatched: function (oEvent) {
@@ -27,7 +36,7 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("products", {}, true);
+                oRouter.navTo("main", {}, true);
             }
         }
     })
