@@ -1,7 +1,6 @@
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
-        xmlns:f="sap.ui.layout.form"
         controllerName='de.nak.minibar.controller.Products'>
 
     <Page title="{i18n>main.PageTitle}"

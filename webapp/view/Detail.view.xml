@@ -20,7 +20,7 @@
                     <Label text="{i18n>Text}" labelFor="inputText"/>
                     <TextArea id="inputText" value="{minibar>Price}" width="100%" enabled="false"/>
                     <Label text="{i18n>Date}" labelFor="inputDate"/>
-                    <Input id="inputDate" value="{minibar>Description}" enabled="false"/>
+                    <TextArea id="inputDate" value="{minibar>Description}" enabled="false" height="50%"/>
                 </f:content>
             </f:SimpleForm>
         </content>

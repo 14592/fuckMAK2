@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/routing/History"
-], function (Controller, History) {
+    "sap/ui/core/routing/History",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
+], function (Controller, History, Filter, FilterOperator) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
 
@@ -20,10 +22,36 @@ sap.ui.define([
         },
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
+            var path = oArgs.path;
+            var result = path.match(/(?=\d).*(?=')/);
+
+            //var oList = this.getView().byId("productList");
+            // var oBinding = oList.getBinding("items");
+            //var aFilter = [];
+            //aFilter.push(new Filter('Category', FilterOperator.Equals, result));
+
             var oView = this.getView();
             var oContext = oView.getModel("minibar").createBindingContext("/" +
                 oArgs.path);
             oView.setBindingContext(oContext, "minibar");
+
+
+            //oBinding.filter(aFilter);
+        },
+
+        onFilter : function(oEvent) {
+            var sQuery = oEvent.getParameter('query');
+            var oList = this.getView().byId("productList");
+            var oBinding = oList.getBinding("items");
+
+            if (sQuery) {
+                var aFilter = []
+                aFilter.push(new Filter("Category", FilterOperator.Contains, sQuery));
+                oBinding.filter(aFilter);
+                alert(oBinding.getLength());
+            } else {
+                oBinding.filter([]);
+            }
         },
 
         onNavButtonPress: function () {
