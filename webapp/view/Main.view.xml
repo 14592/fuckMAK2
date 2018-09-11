@@ -11,7 +11,7 @@
                   enableBusyIndicator="true">
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>mainPageText}" level="H2"/>
+                        <Title text="{i18n>main.PageText}" level="H2"/>
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
@@ -20,7 +20,7 @@
                                   type="Navigation"
                 />
             </List>
-            <Button text="{i18n>SCButton}" press="onSCButtonPress"/>
+            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </content>
     </Page>
 </mvc:View>

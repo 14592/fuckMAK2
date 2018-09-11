@@ -4,12 +4,12 @@
         xmlns:f="sap.ui.layout.form"
         controllerName='de.nak.minibar.controller.Detail'>
     <Page
-            title="{i18n>detail.PageTitel}"
+            title="{i18n>main.PageTitle}"
             showNavButton="true"
             navButtonPress="onNavButtonPress">
         <content>
             <Toolbar>
-                <Title text="{i18n>detail.titel}" level="H2"/>
+                <Title text="{i18n>detail.PageText}" level="H2"/>
             </Toolbar>
             <f:SimpleForm
 

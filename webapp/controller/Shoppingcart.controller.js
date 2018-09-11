@@ -17,18 +17,18 @@ sap.ui.define([
         //     oView.setBindingContext(oContext, "minibar");
         // },
         //
-        // onNavButtonPress: function () {
-        //     // Check if there is UI5 history
-        //     var history = History.getInstance();
-        //     var previousHash = history.getPreviousHash();
-        //
-        //     // If UI5 recorded previous pages, siply go back in history...
-        //     if (previousHash !== undefined) {
-        //         window.history.go(-1);
-        //     } else {
-        //         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        //         oRouter.navTo("products", {}, true);
-        //     }
-        // }
+        onNavButtonPress: function () {
+            // Check if there is UI5 history
+            var history = History.getInstance();
+            var previousHash = history.getPreviousHash();
+
+            // If UI5 recorded previous pages, siply go back in history...
+            if (previousHash !== undefined) {
+                window.history.go(-1);
+            } else {
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("products", {}, true);
+            }
+        }
     })
 });

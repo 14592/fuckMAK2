@@ -6,7 +6,7 @@
           showNavButton="true"
           navButtonPress="onNavButtonPress">
         <content>
-            <List headerText="{i18n>main.headerText}"
+            <List headerText="{i18n>shoppingcard.HeaderText}"
                   items="{ path: 'minibar>/SHOPPINGCARTSet'}"
                   growing="true"
                   growingThreshold="100"
@@ -16,8 +16,8 @@
                         <Title text="{i18n>mainPageText}" level="H2"/>
                     </Toolbar>
                 </headerToolbar>
-                <StandardListItem title="{minibar>Matnr}"
-                                  textarea="{minibar>Amount}"
+                <StandardListItem title="{minibar>Matname}"
+                                  info="{minibar>Amount} x {minibar>Price} {minibar>Currency}"
                 />
             </List>
         </content>
