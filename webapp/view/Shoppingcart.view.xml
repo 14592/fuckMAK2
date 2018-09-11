@@ -17,7 +17,8 @@
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Matname}"
-                                  info="{minibar>Amount} x {minibar>Price} {minibar>Currency}"
+                                  info="{minibar>Price} {minibar>Currency}"
+                                  description="{minibar>Amount}"
                 />
             </List>
         </content>
