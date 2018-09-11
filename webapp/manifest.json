@@ -66,9 +66,9 @@
           "target": "products"
         },
         {
-          "pattern": "shoppingcard/{path}",
-          "name": "shoppingcard",
-          "target": "shoppingcard"
+          "pattern": "shoppingcart/{path}",
+          "name": "shoppingcart",
+          "target": "shoppingcart"
         }
       ],
       "targets": {
@@ -81,8 +81,8 @@
         "products": {
           "viewName": "Products"
         },
-        "shoppingcard": {
-          "viewName": "Shoppingcard"
+        "shoppingcart": {
+          "viewName": "Shoppingcart"
         }
       }
     },

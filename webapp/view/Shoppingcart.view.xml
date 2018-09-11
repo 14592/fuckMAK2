@@ -1,13 +1,13 @@
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
-        controllerName='de.nak.minibar.controller.Shoppingcard'>
+        controllerName='de.nak.minibar.controller.Shoppingcart'>
     <Page title="{i18n>main.PageTitle}"
           showNavButton="true"
           navButtonPress="onNavButtonPress">
         <content>
             <List headerText="{i18n>main.headerText}"
-                  items="{ path: 'minibar>/SHOPPINGCARDSet'}"
+                  items="{ path: 'minibar>/SHOPPINGCARTSet'}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
@@ -16,7 +16,7 @@
                         <Title text="{i18n>mainPageText}" level="H2"/>
                     </Toolbar>
                 </headerToolbar>
-                <StandardListItem title="{minibar>Name}"
+                <StandardListItem title="{minibar>Matnr}"
                                   textarea="{minibar>Amount}"
                 />
             </List>
