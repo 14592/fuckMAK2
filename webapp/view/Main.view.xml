@@ -3,6 +3,8 @@
         xmlns="sap.m"
         controllerName='de.nak.minibar.controller.Main'>
     <Page title="{i18n>main.PageTitle}">
+        <Button text="{i18n>main.SCButton}"
+                press="onSCButtonPress"/>
         <content>
             <List headerText="{i18n>main.headerText}"
                   items="{ path: 'minibar>/CATEGORYSet'}"
@@ -20,7 +22,6 @@
                                   type="Navigation"
                 />
             </List>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </content>
     </Page>
 </mvc:View>

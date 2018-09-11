@@ -66,6 +66,10 @@ sap.ui.define([
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("main", {}, true);
             }
-        }
+        },
+        onSCButtonPress: function (evt) {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+    }
     })
 });

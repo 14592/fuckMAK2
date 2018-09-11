@@ -13,7 +13,7 @@
                   enableBusyIndicator="true">
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>mainPageText}" level="H2"/>
+                        <Title text="{i18n>shoppingcart.PageText}" level="H2"/>
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Matname}"
