@@ -1,11 +1,13 @@
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
-        controllerName='de.nak.minibar.controller.Main'>
-    <Page title="{i18n>main.PageTitle}">
+        controllerName='de.nak.minibar.controller.Shoppingcard'>
+    <Page title="{i18n>main.PageTitle}"
+          showNavButton="true"
+          navButtonPress="onNavButtonPress">
         <content>
             <List headerText="{i18n>main.headerText}"
-                  items="{ path: 'minibar>/CATEGORYSet'}"
+                  items="{ path: 'minibar>/SHOPPINGCARDSet'}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
@@ -15,15 +17,9 @@
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
-
-                                  press="onItemPress"
-                                  type="Navigation"
+                                  textarea="{minibar>Amount}"
                 />
             </List>
-            <Button text="{i18n>SCButton}" press="onSCButtonPress"/>
         </content>
     </Page>
 </mvc:View>
-
-
-

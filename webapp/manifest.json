@@ -64,6 +64,11 @@
           "pattern": "products/{path}",
           "name": "products",
           "target": "products"
+        },
+        {
+          "pattern": "shoppingcard/{path}",
+          "name": "shoppingcard",
+          "target": "shoppingcard"
         }
       ],
       "targets": {
@@ -75,6 +80,9 @@
         },
         "products": {
           "viewName": "Products"
+        },
+        "shoppingcard": {
+          "viewName": "Shoppingcard"
         }
       }
     },
