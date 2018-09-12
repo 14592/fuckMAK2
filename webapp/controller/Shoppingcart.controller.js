@@ -4,6 +4,10 @@ sap.ui.define([
 ], function (Controller, History) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
+
+         deleteSCItem: function (){
+
+         },
         //  onInit: function () {
         //      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         //      oRouter.getRoute("shoppingcart").attachPatternMatched(this._onObjectMatched,
