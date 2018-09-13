@@ -2,9 +2,12 @@
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
         controllerName='de.nak.minibar.controller.Shoppingcart'>
-    <Page title="{i18n>main.PageTitle}"
+     <Page title="{i18n>main.PageTitle}"
           showNavButton="true"
           navButtonPress="onNavButtonPress">
+         <headerContent>
+             <Button text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
+         </headerContent>
         <content>
 
             <Table headerText="{i18n>products.HeaderText}"
@@ -79,4 +82,5 @@
             </List>-->
         </content>
     </Page>
+
 </mvc:View>
