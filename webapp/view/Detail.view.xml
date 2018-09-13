@@ -4,25 +4,26 @@
         xmlns:f="sap.ui.layout.form"
         controllerName='de.nak.minibar.controller.Detail'>
     <Page
-            title="{i18n>detail.PageTitel}"
+            title="{i18n>main.PageTitle}"
             showNavButton="true"
             navButtonPress="onNavButtonPress">
+        <headerContent>
+            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+        </headerContent>
         <content>
             <Toolbar>
-                <Title text="{i18n>detail.titel}" level="H2"/>
+                <Title text="{minibar>Name}" level="H1"/>
             </Toolbar>
-            <f:SimpleForm
 
+
+
+<!--            <f:SimpleForm
                     layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label text="{i18n>Name}" labelFor="inputName"/>
-                    <Input id="inputName" value="{minibar>Name}" enabled="false"/>
-                    <Label text="{i18n>Text}" labelFor="inputText"/>
-                    <TextArea id="inputText" value="{minibar>Text}" width="100%" enabled="false"/>
-                    <Label text="{i18n>Date}" labelFor="inputDate"/>
-                    <Input id="inputDate" value="{minibar>Datum}" enabled="false"/>
+                    <Label text="{minibar>Price}" level="H3"/>
+                    <TextArea id="inputDate" value="{minibar>Description}" enabled="false" height="auto"/>
                 </f:content>
-            </f:SimpleForm>
+            </f:SimpleForm>-->
         </content>
     </Page>
 </mvc:View>

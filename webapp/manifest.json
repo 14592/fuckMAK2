@@ -12,7 +12,7 @@
     },
     "dataSources": {
       "minibarService":{
-        "uri": "https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_ODATA_MINIBAR_SRV/",
+        "uri": "https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/",
         "type": "OData",
         "settings":{
           "odataVersion": "2.0"
@@ -59,6 +59,16 @@
           "pattern": "detail/{path}",
           "name": "detail",
           "target": "detail"
+        },
+        {
+          "pattern": "products/{path}",
+          "name": "products",
+          "target": "products"
+        },
+        {
+          "pattern": "shoppingcart/{path}",
+          "name": "shoppingcart",
+          "target": "shoppingcart"
         }
       ],
       "targets": {
@@ -67,6 +77,12 @@
         },
         "detail": {
           "viewName": "Detail"
+        },
+        "products": {
+          "viewName": "Products"
+        },
+        "shoppingcart": {
+          "viewName": "Shoppingcart"
         }
       }
     },

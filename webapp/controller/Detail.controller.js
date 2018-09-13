@@ -12,9 +12,9 @@ sap.ui.define([
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
             var oView = this.getView();
-            var oContext = oView.getModel("hotel").createBindingContext("/" +
+            var oContext = oView.getModel("minibar").createBindingContext("/" +
                 oArgs.path);
-            oView.setBindingContext(oContext, "hotel");
+            oView.setBindingContext(oContext, "minibar");
         },
 
         onNavButtonPress: function () {
@@ -27,8 +27,12 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("main", {}, true);
+                oRouter.navTo("products", {}, true);
             }
+        },
+        onSCButtonPress: function (evt) {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         }
     })
 });

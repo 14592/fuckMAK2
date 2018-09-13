@@ -1,0 +1,86 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        controllerName='de.nak.minibar.controller.Shoppingcart'>
+     <Page title="{i18n>main.PageTitle}"
+          showNavButton="true"
+          navButtonPress="onNavButtonPress">
+         <headerContent>
+             <Button text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
+         </headerContent>
+        <content>
+
+            <Table headerText="{i18n>products.HeaderText}"
+                   items="{ path: 'minibar>/SHOPPINGCARTSet'}"
+                   growing="true"
+                   growingThreshold="100"
+                   enableBusyIndicator="true"
+                   width="auto">
+
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>shoppingcart.PageText}" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="{i18n>products.ProductName}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="{i18n>products.Price}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="{i18n>shoppingcart.Amount}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="{i18n>shoppingcart.Remove}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{minibar>Matname}" />
+                            <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
+                            <Text text="{minibar>Amount}" />
+                            <Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+
+
+            <!--            <List headerText="{i18n>shoppingcard.HeaderText}"
+                  items="{ path: 'minibar>/SHOPPINGCARTSet'}"
+                  growing="true"
+                  growingThreshold="100"
+                  enableBusyIndicator="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>shoppingcart.PageText}" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <StandardListItem title="{minibar>Matname}"
+                                  info="{minibar>Price} {minibar>Currency}"
+                                  description="{minibar>Amount}">
+                    &lt;!&ndash;<Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem"/>&ndash;&gt;
+                </StandardListItem>
+            </List>-->
+        </content>
+    </Page>
+
+</mvc:View>
