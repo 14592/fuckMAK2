@@ -5,9 +5,33 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
-         deleteSCItem: function (){
+         deleteSCItem: function (oEvent){
+             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+             var oModel = this.getView().getModel("minibar");
+             var oItem = oEvent.getSource();
+             //var sPath = oItem.getBindingContext("minibar").getPath().substr(1);
 
+             oModel.remove("/SHOPPINGCARTSet", oItem)  //DELETE Product from Shopppingcart
+             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
          },
+
+        onSelectedItem: function (oEvent){
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            var oModel = this.getView().getModel("minibar");
+            var oItem = oEvent.getSource();
+            // var MyVariable = oEvent.getParameter("selectedItem").getKey();
+            // alert(MyVariable);
+
+            var oProduct = {
+                Matnr: "78",
+                Amount: "0000000000006"
+            }
+            alert(oProduct.Matnr);
+
+            oModel.update("/SHOPPINGCARTSet", oProduct)  //Update Product from Shopppingcart
+            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+        },
+
         onOrderButtonPress: function (){
             var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
 
@@ -17,6 +41,7 @@ sap.ui.define([
 
             });
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            //sap.ui.getCore().refresh();
             oRouter.navTo("main", {}, true);
 
         },

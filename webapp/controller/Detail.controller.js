@@ -9,6 +9,7 @@ sap.ui.define([
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched,
                 this);
         },
+
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
             var oView = this.getView();
@@ -30,9 +31,27 @@ sap.ui.define([
                 oRouter.navTo("products", {}, true);
             }
         },
-        onSCButtonPress: function (evt) {
+        onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+        },
+
+        onAddToSCPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            var oModel = this.getView().getModel("minibar");
+            var oBindingContext = this.getView().getBindingContext("minibar");
+            var oEntity = oBindingContext.getObject();
+
+            var oItem = {
+                Matnr: oEntity.Matnr,
+                Amount: "0000000000009"
+            };
+
+            oModel.create("/SHOPPINGCARTSet", oItem)  //POST Product to Shopppingcart
+            oRouter.navTo("products", {path:"PRODUCTSet"})
+        },
+        onSelectedItem: function (oEvent) {
+            var value = oEvent.oSource.getSelectedItem().getBindingContext().getPath();
         }
     })
 });

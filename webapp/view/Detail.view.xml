@@ -2,6 +2,7 @@
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
         xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
         controllerName='de.nak.minibar.controller.Detail'>
     <Page
             title="{i18n>main.PageTitle}"
@@ -14,16 +15,26 @@
             <Toolbar>
                 <Title text="{minibar>Name}" level="H1"/>
             </Toolbar>
-
-
-
-<!--            <f:SimpleForm
+            <f:SimpleForm
                     layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label text="{minibar>Price}" level="H3"/>
-                    <TextArea id="inputDate" value="{minibar>Description}" enabled="false" height="auto"/>
+                    <Label text="{minibar>Price}" level="H3" float="left"/>
+                    <TextArea value="{minibar>Description}" enabled="false" height="auto"/>
+                    <ComboBox change="onSelectedItem">
+                        <core:Item key="key1" text="1"/>
+                        <core:Item key="key2" text="2"/>
+                        <core:Item key="key3" text="3"/>
+                        <core:Item key="key4" text="4"/>
+                        <core:Item key="key5" text="5"/>
+                        <core:Item key="key6" text="6"/>
+                        <core:Item key="key7" text="7"/>
+                        <core:Item key="key8" text="8"/>
+                        <core:Item key="key9" text="9"/>
+                        <core:Item key="key10" text="10"/>
+                    </ComboBox>
+                    <Button text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
-            </f:SimpleForm>-->
+            </f:SimpleForm>
         </content>
     </Page>
 </mvc:View>
