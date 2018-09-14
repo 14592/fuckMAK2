@@ -1,6 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/routing/History"
+    "sap/ui/core/routing/History",
+    "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ], function (Controller, History) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
@@ -29,34 +31,22 @@ sap.ui.define([
             alert(oProduct.Matnr);
 
             oModel.update("/SHOPPINGCARTSet", oProduct)  //Update Product from Shopppingcart
-            oModel.refresh();
+            this.getView().getModel("minibar").refresh();
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
+        // Funktion zum anlegen einer Order mit dem aktuellen Warenkorb
         onOrderButtonPress: function (){
-            var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
-
-
-            oModel.callFunction("/checkoutCart", {method:"POST"});
-
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            this.getView().getModel("minibar").refresh();
-            //oRouter.navTo("main", {}, true);
+             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+             var oI18N = this.getView().getModel("i18n").getResourceBundle();
+             var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
+             oModel.callFunction("/checkoutCart", {method:"POST"});
+             sap.m.MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"), {closeOnBrowserNavigation: false});
+             this.getView().getModel("minibar").refresh();
+             oRouter.navTo("main", {}, true);
 
         },
-        //  onInit: function () {
-        //      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        //      oRouter.getRoute("shoppingcart").attachPatternMatched(this._onObjectMatched,
-        //          this);
-        //  },
-        // _onObjectMatched: function (oEvent) {
-        //     var oArgs = oEvent.getParameter("arguments");
-        //     var oView = this.getView();
-        //     var oContext = oView.getModel("minibar").createBindingContext("/" +
-        //         oArgs.path);
-        //     oView.setBindingContext(oContext, "minibar");
-        // },
-        //
+
         onNavButtonPress: function () {
             // Check if there is UI5 history
             var history = History.getInstance();
