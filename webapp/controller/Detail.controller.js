@@ -41,17 +41,13 @@ sap.ui.define([
             var oModel = this.getView().getModel("minibar");
             var oBindingContext = this.getView().getBindingContext("minibar");
             var oEntity = oBindingContext.getObject();
-
+            var sAmount = this.getView().byId("ProductAmount").getSelectedItem().getText();
             var oItem = {
                 Matnr: oEntity.Matnr,
-                Amount: "0000000000009"
+                Amount: sAmount
             };
-
-            oModel.create("/SHOPPINGCARTSet", oItem)  //POST Product to Shopppingcart
+            oModel.create("/SHOPPINGCARTSet", oItem)
             oRouter.navTo("products", {path:"PRODUCTSet"})
-        },
-        onSelectedItem: function (oEvent) {
-            var value = oEvent.oSource.getSelectedItem().getBindingContext().getPath();
         }
     })
 });

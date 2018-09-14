@@ -20,7 +20,7 @@
                 <f:content>
                     <Label text="{minibar>Price}" level="H3" float="left"/>
                     <TextArea value="{minibar>Description}" enabled="false" height="auto"/>
-                    <ComboBox change="onSelectedItem">
+                    <ComboBox id="ProductAmount">
                         <core:Item key="key1" text="1"/>
                         <core:Item key="key2" text="2"/>
                         <core:Item key="key3" text="3"/>

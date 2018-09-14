@@ -15,22 +15,18 @@ sap.ui.define([
              this.getView().getModel("minibar").refresh();
          },
 
-        onSelectedItem: function (oEvent){
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        onChangeProductAmount: function (oEvent){
             var oModel = this.getView().getModel("minibar");
             var oItem = oEvent.getSource();
-            // var MyVariable = oEvent.getParameter("selectedItem").getKey();
-            // alert(MyVariable);
-
+            var oItemProductObject = oItem.getBindingContext("minibar").getObject();
+            var sPath = oItem.getBindingContext("minibar").getPath();
+            var sAmount = oEvent.getSource().getSelectedItem().getText();
             var oProduct = {
-                Matnr: "78",
-                Amount: "0000000000006"
+                Matnr: oItemProductObject.Matnr,
+                Amount: sAmount
             }
-            alert(oProduct.Matnr);
-
-            oModel.update("/SHOPPINGCARTSet", oProduct)  //Update Product from Shopppingcart
+            oModel.update(sPath, oProduct);
             this.getView().getModel("minibar").refresh();
-            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
         // Funktion zum anlegen einer Order mit dem aktuellen Warenkorb

@@ -45,12 +45,6 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
-                            <Text text="{i18n>shoppingcart.Amount}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                        </header>
-                        <footer/>
-                    </Column>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
-                        <header>
                             <Text text="{i18n>shoppingcart.Remove}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
                         <footer/>
@@ -62,8 +56,7 @@
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
                             <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
-                            <Text text="{minibar>Amount}" />
-                            <ComboBox change="onSelectedItem">
+                            <ComboBox change="onChangeProductAmount" placeholder="{= parseFloat(${minibar>Amount})}">
                                 <core:Item key="key1" text="1"/>
                                 <core:Item key="key2" text="2"/>
                                 <core:Item key="key3" text="3"/>
