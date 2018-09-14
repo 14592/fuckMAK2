@@ -29,20 +29,19 @@ sap.ui.define([
             alert(oProduct.Matnr);
 
             oModel.update("/SHOPPINGCARTSet", oProduct)  //Update Product from Shopppingcart
+            oModel.refresh();
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
         onOrderButtonPress: function (){
             var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
 
-            oModel.callFunction("/checkoutCart", {
 
-                method:"POST",
+            oModel.callFunction("/checkoutCart", {method:"POST"});
 
-            });
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            //sap.ui.getCore().refresh();
-            oRouter.navTo("main", {}, true);
+            this.getView().getModel("minibar").refresh();
+            //oRouter.navTo("main", {}, true);
 
         },
         //  onInit: function () {

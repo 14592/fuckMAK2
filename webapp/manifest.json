@@ -96,7 +96,8 @@
       "minibar":{
         "dataSource": "minibarService",
         "settings":{
-          "useBatch": false
+          "useBatch": false,
+          "defaultBindingMode": "OneWay"
         }
       }
     }
