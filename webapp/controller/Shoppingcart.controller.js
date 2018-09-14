@@ -1,20 +1,18 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/m/MessageBox",
     "sap/m/MessageToast"
 ], function (Controller, History) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
+         // Funktion zum Löschen eines Produktes
          deleteSCItem: function (oEvent){
-             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
              var oModel = this.getView().getModel("minibar");
              var oItem = oEvent.getSource();
-             //var sPath = oItem.getBindingContext("minibar").getPath().substr(1);
-
-             oModel.remove("/SHOPPINGCARTSet", oItem)  //DELETE Product from Shopppingcart
-             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+             var sPath = oItem.getBindingContext("minibar").getPath();
+             oModel.remove(sPath);
+             this.getView().getModel("minibar").refresh();
          },
 
         onSelectedItem: function (oEvent){
@@ -41,7 +39,8 @@ sap.ui.define([
              var oI18N = this.getView().getModel("i18n").getResourceBundle();
              var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
              oModel.callFunction("/checkoutCart", {method:"POST"});
-             sap.m.MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"), {closeOnBrowserNavigation: false});
+     //TODO: import setzen
+             sap.m.MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
              this.getView().getModel("minibar").refresh();
              oRouter.navTo("main", {}, true);
 
