@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/m/MessageToast"
-], function (Controller, History) {
+], function (Controller, History, MessageToast) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
@@ -35,11 +35,9 @@ sap.ui.define([
              var oI18N = this.getView().getModel("i18n").getResourceBundle();
              var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
              oModel.callFunction("/checkoutCart", {method:"POST"});
-     //TODO: import setzen
-             sap.m.MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
+             MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
              this.getView().getModel("minibar").refresh();
              oRouter.navTo("main", {}, true);
-
         },
 
         onNavButtonPress: function () {
