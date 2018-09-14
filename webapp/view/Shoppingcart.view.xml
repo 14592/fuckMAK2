@@ -55,7 +55,7 @@
                     <ColumnListItem>
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
-                            <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
+                            <ObjectNumber number="{= parseFloat(${minibar>Price})}" unit=" {minibar>Currency}" />
                             <ComboBox change="onChangeProductAmount" placeholder="{= parseFloat(${minibar>Amount})}">
                                 <core:Item key="key1" text="1"/>
                                 <core:Item key="key2" text="2"/>
