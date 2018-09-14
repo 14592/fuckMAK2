@@ -49,7 +49,7 @@
                     <ColumnListItem type="Navigation" press="onItemPress">
                         <cells>
                             <ObjectIdentifier title="{minibar>Name}" />
-                            <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
+                            <ObjectNumber number="{= parseFloat(${minibar>Price})}" unit=" {minibar>Currency}" />
                             <Text text="{minibar>Pstock}" />
                         </cells>
                     </ColumnListItem>
