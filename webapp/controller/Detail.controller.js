@@ -41,7 +41,7 @@ sap.ui.define([
             var oModel = this.getView().getModel("minibar");
             var oBindingContext = this.getView().getBindingContext("minibar");
             var oEntity = oBindingContext.getObject();
-            var sAmount = this.getView().byId("ProductAmount").getSelectedItem().getText();
+            var sAmount = this.getView().byId("inputAmount").getSelectedItem().getText();
             var oItem = {
                 Matnr: oEntity.Matnr,
                 Amount: sAmount

@@ -7,6 +7,12 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
 
+        onInit: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
+                this);
+        },
+
         onItemPress: function (oEvent) {
             var oItem = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -15,25 +21,26 @@ sap.ui.define([
             });
         },
 
-        onInit: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
-                this);
-        },
         _onObjectMatched: function (oEvent) {
-            var oArgs = oEvent.getParameter("arguments");
-            var path = oArgs.path;
-            var result = path.match(/(?=\d).*(?=')/);
+
+            // var oSource = oEvent.getSource();
+            // var sPath = oSource.getBindingContext("minibar").getPath();
+            //
+            // alert(sPath);
+
+            // var oArgs = oEvent.getParameter("arguments");
+            // var path = oArgs.path;
+            // var result = path.match(/(?=\d).*(?=')/);
 
             //var oList = this.getView().byId("productList");
             // var oBinding = oList.getBinding("items");
             //var aFilter = [];
             //aFilter.push(new Filter('Category', FilterOperator.Equals, result));
 
-            var oView = this.getView();
-            var oContext = oView.getModel("minibar").createBindingContext("/" +
-                oArgs.path);
-            oView.setBindingContext(oContext, "minibar");
+            // var oView = this.getView();
+            // var oContext = oView.getModel("minibar").createBindingContext("/" +
+            //     oArgs.path);
+            // oView.setBindingContext(oContext, "minibar");
 
 
             //oBinding.filter(aFilter);

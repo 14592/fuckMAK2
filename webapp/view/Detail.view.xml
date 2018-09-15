@@ -15,12 +15,14 @@
             <Toolbar>
                 <Title text="{minibar>Name}" level="H1"/>
             </Toolbar>
-            <f:SimpleForm
-                    layout="ResponsiveGridLayout">
+            <f:SimpleForm layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label text="{minibar>Price}" level="H3" float="left"/>
-                    <TextArea value="{minibar>Description}" enabled="false" height="auto"/>
-                    <ComboBox id="ProductAmount">
+                    <Label text="{i18n>detail.Price}" labelFor="inputPrice"/>
+                    <Input id="inputPrice" value="{= parseFloat(${minibar>Price})} {minibar>Currency}" enabled="false"/>
+                    <Label text="{i18n>detail.Description}" labelFor="textareaDescription"/>
+                    <TextArea id="textareaDescription" value="{minibar>Description}" enabled="false"/>
+                    <Label text="{i18n>detail.Amount}" labelFor="inputAmount"/>
+                    <ComboBox id="inputAmount" placeholder="{i18n>detail.selectAmount}">
                         <core:Item key="key1" text="1"/>
                         <core:Item key="key2" text="2"/>
                         <core:Item key="key3" text="3"/>
@@ -32,7 +34,8 @@
                         <core:Item key="key9" text="9"/>
                         <core:Item key="key10" text="10"/>
                     </ComboBox>
-                    <Button text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
+                    <Label text="" labelFor="inputSCButton"/>
+                    <Button id="inputSCButton" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
             </f:SimpleForm>
         </content>
