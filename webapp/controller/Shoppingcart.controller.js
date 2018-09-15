@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/m/MessageToast"
-], function (Controller, History, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/m/MessageBox"
+], function (Controller, History, MessageToast, MessageBox) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
@@ -34,6 +35,17 @@ sap.ui.define([
              var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
              var oI18N = this.getView().getModel("i18n").getResourceBundle();
              var oModel = new sap.ui.model.odata.ODataModel('https://r41z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_15D_54_MINIBAR_SRV_01/');
+             var that = this;
+             // var oErrors = {
+             //     success: function (oData, oResponse) {
+             //         MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
+             //         this.getView().getModel("minibar").refresh();
+             //         oRouter.navTo("main", {}, true);
+             //     },
+             //     error: function (oError) {
+             //         MessageToast.show(that.parseErrorMessage(oError), MessageBox.Icon.ERROR, oI18N.getText("shoppingcart.FailedPlacedOrder"));
+             //     }
+             // }
              oModel.callFunction("/checkoutCart", {method:"POST"});
              MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
              this.getView().getModel("minibar").refresh();
