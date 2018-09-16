@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
 ], function (Controller, History, Filter, FilterOperator) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
@@ -23,27 +23,31 @@ sap.ui.define([
 
         _onObjectMatched: function (oEvent) {
 
-            // var oSource = oEvent.getSource();
-            // var sPath = oSource.getBindingContext("minibar").getPath();
-            //
-            // alert(sPath);
+            var oView = this.getView();
+            var oTable = oView.byId("TableProducts");
+            //var mParams = oEvent.getParameters();
+            var oBinding = oTable.getBinding("items");
 
-            // var oArgs = oEvent.getParameter("arguments");
-            // var path = oArgs.path;
-            // var result = path.match(/(?=\d).*(?=')/);
-
-            //var oList = this.getView().byId("productList");
-            // var oBinding = oList.getBinding("items");
-            //var aFilter = [];
-            //aFilter.push(new Filter('Category', FilterOperator.Equals, result));
-
-            // var oView = this.getView();
-            // var oContext = oView.getModel("minibar").createBindingContext("/" +
-            //     oArgs.path);
-            // oView.setBindingContext(oContext, "minibar");
+            var oArgs = oEvent.getParameter("arguments");
+            var sPath = oArgs.path;
+            var sCategory = sPath.match(/(?=\d).*(?=')/);
 
 
-            //oBinding.filter(aFilter);
+            oBinding.filter(new sap.ui.model.Filter("Category", sap.ui.model.FilterOperator.EQ, sCategory));
+
+
+            // var aFilters = [];
+            // for (var i = 0, l = mParams.filterItems.length; i < l; i++) {
+            //     var oItem = mParams.filterItems[i];
+            //     var aSplit = oItem.getKey().split("___");
+            //     var sPath = aSplit[0];
+            //     var vOperator = aSplit[1];
+            //     var vValue1 = aSplit[2];
+            //     var vValue2 = aSplit[3];
+            //     var oFilter = new sap.ui.model.Filter(sPath, vOperator, vValue1, vValue2);
+            //     aFilters.push(oFilter);
+            // }
+            // oBinding.filter(aFilters);
         },
 
         onFilter : function(oEvent) {

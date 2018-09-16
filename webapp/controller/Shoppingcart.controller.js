@@ -1,9 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/m/MessageToast",
     "sap/m/MessageBox"
-], function (Controller, History, MessageToast, MessageBox) {
+], function (Controller, History, MessageBox) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
@@ -47,9 +46,29 @@ sap.ui.define([
              //     }
              // }
              oModel.callFunction("/checkoutCart", {method:"POST"});
-             MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
-             this.getView().getModel("minibar").refresh();
-             oRouter.navTo("main", {}, true);
+             var that = this;
+             MessageBox.confirm(oI18N.getText("shoppingcart.OrderQuestion"),{
+                 title: "",
+                 initialFocus: null,
+                 textDirection: sap.ui.core.TextDirection.Inherit,
+                 onClose: function(sButton){
+                     if (sButton === MessageBox.Action.OK){
+                         MessageBox.success(oI18N.getText("shoppingcart.PlacedOrder"),{
+                             title: "",
+                             initialFocus: null,
+                             textDirection: sap.ui.core.TextDirection.Inherit,
+                             onClose: function(sButton){
+                                 if (sButton === MessageBox.Action.OK){
+                                     that.getView().getModel("minibar").refresh();
+                                     oRouter.navTo("main", {}, true);
+                                 };
+                             }
+                         });
+                     }else if (sButton === MessageBox.Action.CANCEL){
+                        //Nichts tun
+                     };
+                 }
+             });
         },
 
         onNavButtonPress: function () {

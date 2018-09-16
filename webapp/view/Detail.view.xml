@@ -18,10 +18,10 @@
             <f:SimpleForm layout="ResponsiveGridLayout">
                 <f:content>
                     <Label text="{i18n>detail.Price}" labelFor="inputPrice"/>
-                    <Input id="inputPrice" value="{= parseFloat(${minibar>Price})} {minibar>Currency}" enabled="false"/>
-                    <Label text="{i18n>detail.Description}" labelFor="textareaDescription"/>
-                    <TextArea id="textareaDescription" value="{minibar>Description}" enabled="false"/>
-                    <Label text="{i18n>detail.Amount}" labelFor="inputAmount"/>
+                    <Text id="inputPrice" text="{= parseFloat(${minibar>Price})} {minibar>Currency}" />
+                    <Label text="{i18n>detail.Description}" labelFor="textareaDescription" />
+                    <Text id="textareaDescription" text="{minibar>Description}" enabled="false" />
+                    <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />
                     <Select id="inputAmount" placeholder="{i18n>detail.selectAmount}" >
                         <core:Item key="1" text="1"/>
                         <core:Item key="2" text="2"/>
