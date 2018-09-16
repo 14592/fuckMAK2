@@ -56,18 +56,18 @@
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
                             <ObjectNumber number="{= parseFloat(${minibar>Price})}" unit=" {minibar>Currency}" />
-                            <ComboBox change="onChangeProductAmount" placeholder="{= parseFloat(${minibar>Amount})}">
-                                <core:Item key="key1" text="1"/>
-                                <core:Item key="key2" text="2"/>
-                                <core:Item key="key3" text="3"/>
-                                <core:Item key="key4" text="4"/>
-                                <core:Item key="key5" text="5"/>
-                                <core:Item key="key6" text="6"/>
-                                <core:Item key="key7" text="7"/>
-                                <core:Item key="key8" text="8"/>
-                                <core:Item key="key9" text="9"/>
-                                <core:Item key="key10" text="10"/>
-                            </ComboBox>
+                            <Select change="onChangeProductAmount" selectedKey="{= parseFloat(${minibar>Amount})}">
+                                <core:Item key="1" text="1"/>
+                                <core:Item key="2" text="2"/>
+                                <core:Item key="3" text="3"/>
+                                <core:Item key="4" text="4"/>
+                                <core:Item key="5" text="5"/>
+                                <core:Item key="6" text="6"/>
+                                <core:Item key="7" text="7"/>
+                                <core:Item key="8" text="8"/>
+                                <core:Item key="9" text="9"/>
+                                <core:Item key="10" text="10"/>
+                            </Select>
                             <Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
                         </cells>
                     </ColumnListItem>
