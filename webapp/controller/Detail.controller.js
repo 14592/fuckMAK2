@@ -49,42 +49,36 @@ sap.ui.define([
                 Matnr: oEntity.Matnr,
                 Amount: sAmount
             };
-            // var that = this;
-            // var oI18N = this.getView().getModel("i18n").getResourceBundle();
-            // var oErrors = {
-            //     success: function (oData, oResponse) {
-            //         MessageToast.show(oI18N.getText("shoppingcart.PlacedOrder"));
-            //         this.getView().getModel("minibar").refresh();
-            //         oRouter.navTo("main", {}, true);
-            //     },
-            //     error: function (oError) {
-            //         MessageToast.show(that.parseErrorMessage(oError), MessageBox.Icon.ERROR, oI18N.getText("shoppingcart.FailedPlacedOrder"));
-            //     }
-            // };
-            oModel.create("/SHOPPINGCARTSet", oItem);
-            MessageBox.success(oI18N.getText("detail.ProductPlacedInSC"),{
-                title: "",
-                initialFocus: null,
-                textDirection: sap.ui.core.TextDirection.Inherit,
-                onClose: function(sButton){
-                    if (sButton === MessageBox.Action.OK){
-                        MessageBox.show(oI18N.getText("detail.NavigateToSC"),{
-                            title: "",
-                            icon: sap.m.MessageBox.Icon.QUESTION,
-                            actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-                            initialFocus: null,
-                            textDirection: sap.ui.core.TextDirection.Inherit,
-                            onClose: function(sButton){
-                                if (sButton === MessageBox.Action.YES){
-                                    oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"});
-                                }else if (sButton === MessageBox.Action.NO){
-                                    oRouter.navTo("products", {path:"PRODUCTSet"});
-                                };
-                            }
-                        });
-                    };
+            var mParameters = {
+                success: function (oData, oResponse) {
+                    MessageBox.success(oI18N.getText("detail.ProductPlacedInSC"),{
+                        initialFocus: null,
+                        textDirection: sap.ui.core.TextDirection.Inherit,
+                        onClose: function(sButton){
+                            if (sButton === MessageBox.Action.OK){
+                                MessageBox.show(oI18N.getText("detail.NavigateToSC"),{
+                                    icon: sap.m.MessageBox.Icon.QUESTION,
+                                    actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                                    initialFocus: null,
+                                    textDirection: sap.ui.core.TextDirection.Inherit,
+                                    onClose: function(sButton){
+                                        if (sButton === MessageBox.Action.YES){
+                                            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"});
+                                        }else if (sButton === MessageBox.Action.NO){
+                                            oRouter.navTo("products", {path:"PRODUCTSet"});
+                                        };
+                                    }
+                                });
+                            };
+                        }
+                    });
+                },
+                error: function (error) {
+                    var sMessage = JSON.parse(error.responseText);
+                    MessageBox.error(sMessage.error.message.value);
                 }
-            });
+            };
+            oModel.create("/SHOPPINGCARTSet", oItem , mParameters);
         }
     })
 });
