@@ -6,6 +6,19 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
+        onUpdateFinished: function(oEvent){
+            var oTable = this.getView().byId("shoppingcartTable");
+            var l = oTable.getItems().length;
+            var iTotalPrice = 0;
+            for(var i = 0; i < l; i++){
+                var aItem = oTable.getItems(i);
+                var oItem = aItem[i].getBindingContext("minibar").getObject();
+                var iPrice = parseFloat(oItem.Price);
+                iTotalPrice = iTotalPrice + iPrice;
+            }
+            this.getView().byId("shoppingcartTotalPrice").setText(iTotalPrice);
+        },
+
          // Funktion zum Löschen eines Produktes
          deleteSCItem: function (oEvent){
              var oModel = this.getView().getModel("minibar");

@@ -13,6 +13,23 @@ sap.ui.define([
                 this);
         },
 
+        onUpdateFinished: function(oEvent){
+            var oI18N = this.getView().getModel("i18n").getResourceBundle();
+            var oTable = this.getView().byId("productsTable");
+            var l = oTable.getItems().length;
+            for(var i = 0; i < l; i++){
+                var aItem = oTable.getItems(i);
+                var oItem = aItem[i].getBindingContext("minibar").getObject();
+                var sPstock = oItem.Pstock;
+                if (sPstock === "X"){
+                    this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.Available"));
+                }else {
+                    this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.NotAvailable"));
+                }
+            }
+
+        },
+
         onItemPress: function (oEvent) {
             var oItem = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
