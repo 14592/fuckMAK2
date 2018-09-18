@@ -79,8 +79,9 @@ sap.ui.define([
                                 });
                             },
                             error: function (oError) {
-                                var sMessage = oError.response;
-                                alert(sMessage.body)
+                                var sResponseBody = oError.response.body;
+
+                                alert(sResponseBody);
                                 //MessageBox.error(sMessage.error.body.value);
                             }
                         });
