@@ -22,7 +22,7 @@
                     <Label text="{i18n>detail.Description}" labelFor="textareaDescription" />
                     <Text id="textareaDescription" text="{minibar>Description}" enabled="false" />
                     <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />
-                    <Select id="inputAmount" placeholder="{i18n>detail.selectAmount}" >
+                    <Select id="inputAmount" placeholder="{i18n>detail.selectAmount}" icon="sap-icon://slim-arrow-down" >
                         <core:Item key="1" text="1"/>
                         <core:Item key="2" text="2"/>
                         <core:Item key="3" text="3"/>
@@ -35,7 +35,7 @@
                         <core:Item key="10" text="10"/>
                     </Select>
                     <Label text="" labelFor="inputSCButton"/>
-                    <Button id="inputSCButton" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
+                    <Button id="inputSCButton" icon="sap-icon://cart-4" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
             </f:SimpleForm>
         </content>
