@@ -22,7 +22,7 @@
                     <Label text="{i18n>detail.Description}" labelFor="textareaDescription" />
                     <Text id="textareaDescription" text="{minibar>Description}" enabled="false" />
                     <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />
-                    <Select id="inputAmount" placeholder="{i18n>detail.selectAmount}" >
+                    <Select id="inputAmount" placeholder="{i18n>detail.selectAmount}" icon="sap-icon://slim-arrow-down" >
                         <core:Item key="1" text="1"/>
                         <core:Item key="2" text="2"/>
                         <core:Item key="3" text="3"/>
