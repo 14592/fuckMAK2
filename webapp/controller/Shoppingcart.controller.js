@@ -80,9 +80,9 @@ sap.ui.define([
                             },
                             error: function (oError) {
                                 var sResponseBody = oError.response.body;
-
-                                alert(sResponseBody);
-                                //MessageBox.error(sMessage.error.body.value);
+                                var aMessage = sResponseBody.match(/(?<=<message>)(.*)(?=<\/message)/);
+                                var sMessage = aMessage[0];
+                                MessageBox.error(sMessage);
                             }
                         });
                     } else if (sButton === MessageBox.Action.CANCEL) {
