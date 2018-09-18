@@ -69,7 +69,7 @@
                                 <core:Item key="9" text="9"/>
                                 <core:Item key="10" text="10"/>
                             </Select>
-                            <Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
+                            <Button icon="sap-icon://delete" text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
                         </cells>
                     </ColumnListItem>
                 </items>
