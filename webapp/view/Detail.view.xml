@@ -35,7 +35,7 @@
                         <core:Item key="10" text="10"/>
                     </Select>
                     <Label text="" labelFor="inputSCButton"/>
-                    <Button id="inputSCButton" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
+                    <Button id="inputSCButton" icon="sap-icon://cart-4" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
             </f:SimpleForm>
         </content>
