@@ -8,7 +8,7 @@
           showNavButton="true"
           navButtonPress="onNavButtonPress">
          <headerContent>
-             <Button text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
+             <Button icon="sap-icon://cart-approval" text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
          </headerContent>
         <content>
 

@@ -7,7 +7,7 @@
           showNavButton="true"
           navButtonPress="onNavButtonPress">
         <headerContent>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
         <content>
 

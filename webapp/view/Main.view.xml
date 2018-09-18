@@ -4,7 +4,7 @@
         controllerName='de.nak.minibar.controller.Main'>
     <Page title="{i18n>main.PageTitle}">
         <headerContent>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
         <content>
             <List headerText="{i18n>main.headerText}"
