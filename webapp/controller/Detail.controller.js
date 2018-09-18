@@ -73,9 +73,9 @@ sap.ui.define([
                         }
                     });
                 },
-                error: function (error) {
-                    var sMessage = JSON.parse(error.responseText);
-                    MessageBox.error(sMessage.error.message.value);
+                error: function (oError) {
+                    var sMessage = JSON.parse(oError.responseText).error.message.value;
+                    MessageBox.error(sMessage);
                 }
             };
             oModel.create("/SHOPPINGCARTSet", oItem , mParameters);

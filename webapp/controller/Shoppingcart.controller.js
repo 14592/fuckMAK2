@@ -24,9 +24,9 @@ sap.ui.define([
                          }
                      });
                  },
-                 error: function (error) {
-                     var sMessage = JSON.parse(error.responseText);
-                     MessageBox.error(sMessage.error.message.value);
+                 error: function (oError) {
+                     var sMessage = JSON.parse(oError.responseText).error.message.value;
+                     MessageBox.error(sMessage);
                  }
              };
              oModel.remove(sPath, mParameters);
@@ -43,9 +43,9 @@ sap.ui.define([
                 Amount: sAmount
             };
             var mParameters = {
-                error: function (error) {
-                    var sMessage = JSON.parse(error.responseText);
-                    MessageBox.error(sMessage.error.message.value);
+                error: function (oError) {
+                    var sMessage = JSON.parse(oError.responseText).error.message.value;
+                    MessageBox.error(sMessage);
                 }
             };
             oModel.update(sPath, oProduct, mParameters);
@@ -78,9 +78,10 @@ sap.ui.define([
                                     }
                                 });
                             },
-                            error: function (error) {
-                                var sMessage = JSON.parse(error.response.body);
-                                MessageBox.error(sMessage.error.message.value);
+                            error: function (oError) {
+                                var sMessage = JSON.parse(oError.response.body);
+                                alert(sMessage)
+                                //MessageBox.error(sMessage.error.body.value);
                             }
                         });
                     } else if (sButton === MessageBox.Action.CANCEL) {
@@ -95,7 +96,7 @@ sap.ui.define([
             var history = History.getInstance();
             var previousHash = history.getPreviousHash();
 
-            // If UI5 recorded previous pages, siply go back in history...
+            // If UI5 recorded previous pages, simply go back in history...
             if (previousHash !== undefined) {
                 window.history.go(-1);
             } else {
