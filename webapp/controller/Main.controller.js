@@ -3,6 +3,7 @@ sap.ui.define([
 ], function (Controller) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Main", {
+
         onItemPress: function (oEvent) {
             var oCategory = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

@@ -6,6 +6,7 @@ sap.ui.define([
 ], function (Controller, History, MessageBox, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
+
         formatter: formatter,
 
         onUpdateFinished: function(){
