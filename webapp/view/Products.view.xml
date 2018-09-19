@@ -51,7 +51,7 @@
                     <ColumnListItem type="Navigation" press="onItemPress">
                         <cells>
                             <ObjectIdentifier title="{minibar>Name}" />
-                            <ObjectNumber number="{= parseFloat(${minibar>Price})}" unit="{minibar>Currency}" />
+                            <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
                             <Text text="{minibar>Pstock}" />
                         </cells>
                     </ColumnListItem>

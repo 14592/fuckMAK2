@@ -18,7 +18,7 @@
             <f:SimpleForm layout="ResponsiveGridLayout">
                 <f:content>
                     <Label text="{i18n>detail.Price}" labelFor="inputPrice"/>
-                    <Text id="inputPrice" text="{= parseFloat(${minibar>Price})} {minibar>Currency}" />
+                    <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
                     <Label text="{i18n>detail.Description}" labelFor="textareaDescription" />
                     <Text id="textareaDescription" text="{minibar>Description}" enabled="false" />
                     <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />

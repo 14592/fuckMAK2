@@ -2,11 +2,12 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/m/MessageToast",
-    "sap/m/MessageBox"
-], function (Controller, History, MessageToast, MessageBox) {
+    "sap/m/MessageBox",
+    '../model/formatter'
+], function (Controller, History, MessageToast, MessageBox, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Detail", {
-
+        formatter: formatter,
         onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched,
