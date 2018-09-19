@@ -18,6 +18,17 @@ sap.ui.define([
                 decimalSeparator: ","
             });
             return numberFormat.format(sValue);
+        },
+
+        availableText: function (sValue) {
+            var oI18N = this.getView().getModel("i18n").getResourceBundle();
+            var sAvailable = oI18N.getText("products.Available");
+            var sNotAvailable = oI18N.getText("products.NotAvailable");
+            if (sValue === "X"){
+                return sAvailable;
+            }else {
+                return sNotAvailable;
+            };
         }
     };
 

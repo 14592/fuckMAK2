@@ -17,7 +17,6 @@
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"
-                   updateFinished="onUpdateFinished"
                    width="auto">
 
                 <headerToolbar>
@@ -52,7 +51,7 @@
                         <cells>
                             <ObjectIdentifier title="{minibar>Name}" />
                             <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
-                            <Text text="{minibar>Pstock}" />
+                            <Text text="{path : 'minibar>Pstock',	formatter : '.formatter.availableText'}" />
                         </cells>
                     </ColumnListItem>
                 </items>
