@@ -5,17 +5,12 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
 
-        // onInit: function () {
-        //     var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        //     oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
-        //         this);
-        // },
-        onSCButtonPress: function (evt) {
+        onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
-        onUpdateFinished: function(oEvent){
+        onUpdateFinished: function(){
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
             var oTable = this.getView().byId("productsTable");
             var l = oTable.getItems().length;

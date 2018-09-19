@@ -8,7 +8,7 @@ sap.ui.define([
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("products", {path: oCategory.getBindingContext("minibar").getPath().substr(1)});
         },
-        onSCButtonPress: function (evt) {
+        onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         }

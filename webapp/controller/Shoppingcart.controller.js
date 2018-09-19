@@ -6,7 +6,7 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
-        onUpdateFinished: function(oEvent){
+        onUpdateFinished: function(){
             var oTable = this.getView().byId("shoppingcartTable");
             var l = oTable.getItems().length;
             var iTotalPrice = 0;
@@ -26,7 +26,7 @@ sap.ui.define([
              var oItem = oEvent.getSource();
              var sPath = oItem.getBindingContext("minibar").getPath();
              var mParameters = {
-                 success: function (oData, oResponse) {
+                 success: function () {
                      MessageBox.success(oI18N.getText("shoppingcart.DeleteSuccess"),{
                          initialFocus: null,
                          textDirection: sap.ui.core.TextDirection.Inherit,
@@ -78,7 +78,7 @@ sap.ui.define([
                     if (sButton === MessageBox.Action.OK) {
                         oModel.callFunction("/checkoutCart", {
                             method: "POST",
-                            success: function (oData, oResponse) {
+                            success: function () {
                                 MessageBox.success(oI18N.getText("shoppingcart.PlacedOrder"), {
                                     title: "",
                                     initialFocus: null,
