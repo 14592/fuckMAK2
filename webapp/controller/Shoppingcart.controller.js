@@ -6,9 +6,11 @@ sap.ui.define([
 ], function (Controller, History, MessageBox, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
-
+        //formatter Aufruf
         formatter: formatter,
 
+        //nach dem laden der Warenkorbtabelle alle Produktpreise auslesen, addieren
+        //und in den footer der Tabelle schreiben
         onUpdateFinished: function(){
             var oTable = this.getView().byId("shoppingcartTable");
             var l = oTable.getItems().length;
@@ -23,32 +25,35 @@ sap.ui.define([
             this.getView().byId("shoppingcartTotalPrice").setUnit("EUR");
         },
 
-         // Funktion zum Löschen eines Produktes
-         deleteSCItem: function (oEvent){
-             var oModel = this.getView().getModel("minibar");
-             var oI18N = this.getView().getModel("i18n").getResourceBundle();
-             var oItem = oEvent.getSource();
-             var sPath = oItem.getBindingContext("minibar").getPath();
-             var mParameters = {
-                 success: function () {
-                     MessageBox.success(oI18N.getText("shoppingcart.DeleteSuccess"),{
-                         initialFocus: null,
-                         textDirection: sap.ui.core.TextDirection.Inherit,
-                         onClose: function(sButton) {
-                             if (sButton === MessageBox.Action.OK){
-                                 //Nichts tun
-                             }
-                         }
-                     });
-                 },
-                 error: function (oError) {
-                     var sMessage = JSON.parse(oError.responseText).error.message.value;
-                     MessageBox.error(sMessage);
-                 }
-             };
-             oModel.remove(sPath, mParameters);
-         },
+        //Löschen des ausgewählten Produktes der Warenkorbtabelle
+        //Rückmeldung, ob das Löschen erfolgreich war oder ein Fehler aufgetreten ist (anzeigen welcher)
+        deleteSCItem: function (oEvent){
+            var oModel = this.getView().getModel("minibar");
+            var oI18N = this.getView().getModel("i18n").getResourceBundle();
+            var oItem = oEvent.getSource();
+            var sPath = oItem.getBindingContext("minibar").getPath();
+            var mParameters = {
+                success: function () {
+                    MessageBox.success(oI18N.getText("shoppingcart.DeleteSuccess"),{
+                        initialFocus: null,
+                        textDirection: sap.ui.core.TextDirection.Inherit,
+                        onClose: function(sButton) {
+                            if (sButton === MessageBox.Action.OK){
+                                //Nichts tun
+                            }
+                        }
+                    });
+                },
+                error: function (oError) {
+                    var sMessage = JSON.parse(oError.responseText).error.message.value;
+                    MessageBox.error(sMessage);
+                }
+            };
+            oModel.remove(sPath, mParameters);
+        },
 
+        //setzt die neu festgelegte Bestellmenge des ausgewählten Produktes
+        //meldet einen Fehler, falls einer auftreten sollte
         onChangeProductAmount: function (oEvent){
             var oModel = this.getView().getModel("minibar");
             var oItem = oEvent.getSource();
@@ -68,7 +73,10 @@ sap.ui.define([
             oModel.update(sPath, oProduct, mParameters);
         },
 
-        // Funktion zum anlegen einer Order mit dem aktuellen Warenkorb
+        //Legt eine neuer Ordner mit den im Warenkorb befindlichen Produkten an
+        //Abfrage, ob wirklich bestellt werden soll
+        //Rückmeldung, ob die Bestellung erfolgreich war
+        //bei auftreten eines Fehlers, wird dieser angezeigt
         onOrderButtonPress: function (){
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
@@ -109,12 +117,11 @@ sap.ui.define([
             });
         },
 
+        //in der Historie zurückgehen
+        //falls keine Historie vorhanden ist, auf die main Seite zurückkehren
         onNavButtonPress: function () {
-            // Check if there is UI5 history
             var history = History.getInstance();
             var previousHash = history.getPreviousHash();
-
-            // If UI5 recorded previous pages, simply go back in history...
             if (previousHash !== undefined) {
                 window.history.go(-1);
             } else {

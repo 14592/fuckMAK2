@@ -14,11 +14,10 @@
                   enableBusyIndicator="true">
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>main.PageText}" level="H2"/>
+                        <Title text="{i18n>main.PageText}" level="H1"/>
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
-
                                   press="onItemPress"
                                   type="Navigation"
                 />

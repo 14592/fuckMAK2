@@ -4,11 +4,8 @@ sap.ui.define([
     "use strict";
 
     var formatter = {
-        /**
-         * Formats the price
-         * @param {string} sValue model price value
-         * @return {string} formatted price
-         */
+
+        //formatiert den importierten String zum Preisformat
         price: function (sValue) {
             var numberFormat = NumberFormat.getFloatInstance({
                 maxFractionDigits: 2,
@@ -20,6 +17,8 @@ sap.ui.define([
             return numberFormat.format(sValue);
         },
 
+        //wenn importierter String "X" ist, dann wird der String "Verfügbar" zurückgegeben
+        //wenn nicht dann "nicht Verfügbar"
         availableText: function (sValue) {
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
             var sAvailable = oI18N.getText("products.Available");

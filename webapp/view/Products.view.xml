@@ -21,7 +21,7 @@
 
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>products.PageText}" level="H2"/>
+                        <Title text="{i18n>products.PageText}" level="H1"/>
                     </Toolbar>
                 </headerToolbar>
 

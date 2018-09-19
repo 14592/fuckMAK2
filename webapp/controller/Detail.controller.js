@@ -7,15 +7,18 @@ sap.ui.define([
 ], function (Controller, History, MessageToast, MessageBox, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Detail", {
-
+        //formatter Aufruf
         formatter: formatter,
 
+        //initialisieren der Funktion _onObjectMatched mit getRoute
         onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched,
                 this);
         },
 
+        //Pfad vom angeklickten Produkt generieren und in der View setzen,
+        //damit genau das eine Produkt angezeigt werden kann
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
             var oView = this.getView();
@@ -24,24 +27,15 @@ sap.ui.define([
             oView.setBindingContext(oContext, "minibar");
         },
 
-        onNavButtonPress: function () {
-            // Check if there is UI5 history
-            var history = History.getInstance();
-            var previousHash = history.getPreviousHash();
-
-            // If UI5 recorded previous pages, siply go back in history...
-            if (previousHash !== undefined) {
-                window.history.go(-1);
-            } else {
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("main", {}, true);
-            }
-        },
+        //zum Warenkorb navigieren
         onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
+        //Produkt zum Warenkorb hinzufügen
+        //Wenn maximale Anzahl im Warenkorb überschritten wird, Fehler anzeigen
+        //Nach hinzufügen zum Warenkorb, entscheiden ob zum Warenkorb navigieren oder nicht
         onAddToSCPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
@@ -84,6 +78,19 @@ sap.ui.define([
                 }
             };
             oModel.create("/SHOPPINGCARTSet", oItem , mParameters);
+        },
+
+        //in der Historie zurückgehen
+        //falls keine Historie vorhanden ist, auf die main Seite zurückkehren
+        onNavButtonPress: function () {
+            var history = History.getInstance();
+            var previousHash = history.getPreviousHash();
+            if (previousHash !== undefined) {
+                window.history.go(-1);
+            } else {
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("main", {}, true);
+            }
         }
     })
 });

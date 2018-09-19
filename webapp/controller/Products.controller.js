@@ -5,15 +5,17 @@ sap.ui.define([
 ], function (Controller, History, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
-
+        //formatter Aufruf
         formatter: formatter,
 
+        //initialisieren der Funktion _onObjectMatched
         onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
                 this);
         },
 
+        //alle Produkte der ausgewählten Kategorie anzeigen
         _onObjectMatched: function (oEvent) {
             var oArgs = oEvent.getParameter("arguments");
             var oView = this.getView();
@@ -22,12 +24,14 @@ sap.ui.define([
             oView.setBindingContext(oContext, "minibar", {expand: 'CategoryToProductsNav'});
         },
 
-
+        //zum Warenkorb navigieren
         onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         },
 
+        //ausgewähltes Produkt bestimmen und im Pfad mitgeben
+        //zur Detailseite navigieren
         onItemPress: function (oEvent) {
             var oItem = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -36,12 +40,11 @@ sap.ui.define([
             });
         },
 
+        //in der Historie zurückgehen
+        //falls keine Historie vorhanden ist, auf die main Seite zurückkehren
         onNavButtonPress: function () {
-            // Check if there is UI5 history
             var history = History.getInstance();
             var previousHash = history.getPreviousHash();
-
-            // If UI5 recorded previous pages, siply go back in history...
             if (previousHash !== undefined) {
                 window.history.go(-1);
             } else {
