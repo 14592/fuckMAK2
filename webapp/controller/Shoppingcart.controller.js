@@ -19,14 +19,6 @@ sap.ui.define([
             this.getView().byId("shoppingcartTotalPrice").setText(iTotalPrice);
         },
 
-        onItemPress: function (oEvent) {
-            var oItem = oEvent.getSource();
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("detail", {
-                path: oItem.getBindingContext("minibar").getPath().substr(1)
-            });
-        },
-
          // Funktion zum Löschen eines Produktes
          deleteSCItem: function (oEvent){
              var oModel = this.getView().getModel("minibar");
@@ -123,7 +115,7 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("products", {}, true);
+                oRouter.navTo("main", {}, true);
             }
         }
     })

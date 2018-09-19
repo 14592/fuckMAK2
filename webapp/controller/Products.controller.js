@@ -10,6 +10,10 @@ sap.ui.define([
         //     oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
         //         this);
         // },
+        onSCButtonPress: function (evt) {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+        },
 
         onUpdateFinished: function(oEvent){
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
@@ -48,10 +52,6 @@ sap.ui.define([
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("main", {}, true);
             }
-        },
-        onSCButtonPress: function (evt) {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
-    }
+        }
     })
 });
