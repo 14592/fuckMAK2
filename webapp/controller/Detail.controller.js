@@ -47,6 +47,7 @@ sap.ui.define([
             var oBindingContext = this.getView().getBindingContext("minibar");
             var oEntity = oBindingContext.getObject();
             var sAmount = this.getView().byId("inputAmount").getSelectedItem().getText();
+            var that = this;
             var oItem = {
                 Matnr: oEntity.Matnr,
                 Amount: sAmount
@@ -67,7 +68,7 @@ sap.ui.define([
                                         if (sButton === MessageBox.Action.YES){
                                             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"});
                                         }else if (sButton === MessageBox.Action.NO){
-                                            oRouter.navTo("products", {path:"PRODUCTSet"});
+                                            that.onNavButtonPress();
                                         };
                                     }
                                 });
