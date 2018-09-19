@@ -11,12 +11,13 @@
         </headerContent>
         <content>
 
-            <Table id="TableProducts"
+            <Table id="productsTable"
                    headerText="{i18n>products.HeaderText}"
                    items="{ path: 'minibar>/PRODUCTSet'}"
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"
+                   updateFinished="onUpdateFinished"
                    width="auto">
 
                 <headerToolbar>
@@ -40,7 +41,7 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
-                            <Text text="{i18n>products.ProductAvailable}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="{i18n>products.Available}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
                         <footer/>
                     </Column>

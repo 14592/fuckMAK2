@@ -12,11 +12,13 @@
          </headerContent>
         <content>
 
-            <Table headerText="{i18n>products.HeaderText}"
+            <Table id="shoppingcartTable"
+                   headerText="{i18n>products.HeaderText}"
                    items="{ path: 'minibar>/SHOPPINGCARTSet'}"
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"
+                   updateFinished="onUpdateFinished"
                    width="auto">
 
                 <headerToolbar>
@@ -36,7 +38,7 @@
                         <header>
                             <Text text="{i18n>products.Price}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
-                        <footer/>
+                        <footer><Text id="shoppingcartTotalPrice"/></footer>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>

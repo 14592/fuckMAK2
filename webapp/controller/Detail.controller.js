@@ -6,6 +6,7 @@ sap.ui.define([
 ], function (Controller, History, MessageToast, MessageBox) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Detail", {
+
         onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched,
@@ -30,7 +31,7 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("products", {}, true);
+                oRouter.navTo("main", {}, true);
             }
         },
         onSCButtonPress: function () {
@@ -50,7 +51,7 @@ sap.ui.define([
                 Amount: sAmount
             };
             var mParameters = {
-                success: function (oData, oResponse) {
+                success: function () {
                     MessageBox.success(oI18N.getText("detail.ProductPlacedInSC"),{
                         initialFocus: null,
                         textDirection: sap.ui.core.TextDirection.Inherit,

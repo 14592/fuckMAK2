@@ -6,6 +6,19 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
 
+        onUpdateFinished: function(){
+            var oTable = this.getView().byId("shoppingcartTable");
+            var l = oTable.getItems().length;
+            var iTotalPrice = 0;
+            for(var i = 0; i < l; i++){
+                var aItem = oTable.getItems(i);
+                var oItem = aItem[i].getBindingContext("minibar").getObject();
+                var iPrice = parseFloat(oItem.Price);
+                iTotalPrice = iTotalPrice + iPrice;
+            }
+            this.getView().byId("shoppingcartTotalPrice").setText(iTotalPrice);
+        },
+
          // Funktion zum Löschen eines Produktes
          deleteSCItem: function (oEvent){
              var oModel = this.getView().getModel("minibar");
@@ -13,7 +26,7 @@ sap.ui.define([
              var oItem = oEvent.getSource();
              var sPath = oItem.getBindingContext("minibar").getPath();
              var mParameters = {
-                 success: function (oData, oResponse) {
+                 success: function () {
                      MessageBox.success(oI18N.getText("shoppingcart.DeleteSuccess"),{
                          initialFocus: null,
                          textDirection: sap.ui.core.TextDirection.Inherit,
@@ -65,7 +78,7 @@ sap.ui.define([
                     if (sButton === MessageBox.Action.OK) {
                         oModel.callFunction("/checkoutCart", {
                             method: "POST",
-                            success: function (oData, oResponse) {
+                            success: function () {
                                 MessageBox.success(oI18N.getText("shoppingcart.PlacedOrder"), {
                                     title: "",
                                     initialFocus: null,
@@ -80,8 +93,8 @@ sap.ui.define([
                             },
                             error: function (oError) {
                                 var sResponseBody = oError.response.body;
-                                var aMessage = sResponseBody.match(/(?<=<message>)(.*)(?=<\/message)/);
-                                var sMessage = aMessage[0];
+                                var aMessage = sResponseBody.match(/.*\<message.*\>([a-zA-Z\s\.]*)\<\/message\>.*/);
+                                var sMessage = aMessage[1];
                                 MessageBox.error(sMessage);
                             }
                         });
@@ -102,7 +115,7 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("products", {}, true);
+                oRouter.navTo("main", {}, true);
             }
         }
     })
