@@ -1,7 +1,7 @@
 {
     "sapProtocol": "https",
     "sapHost": "r41z.ucc.ovgu.de",
-    "sapBspContainer": "ZVG_15D_54_MB",
+    "sapBspContainer": "ZVG_15D_54_WP",
     "sapPackage": "ZVG_15D_54_SEMESTERARBEIT",
     "sapTransport": "R41K908135",
 	"sapAppName" : "ZVG_15D_54_MB",
