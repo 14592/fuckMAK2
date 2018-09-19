@@ -13,7 +13,7 @@
 
             <Table id="productsTable"
                    headerText="{i18n>products.HeaderText}"
-                   items="{ path: 'minibar>/PRODUCTSet'}"
+                   items="{ path: 'minibar>CategoryToProductsNav'}"
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"

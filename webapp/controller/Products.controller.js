@@ -6,6 +6,22 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
         formatter: formatter,
+
+        onInit: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
+                this);
+        },
+
+        _onObjectMatched: function (oEvent) {
+            var oArgs = oEvent.getParameter("arguments");
+            var oView = this.getView();
+            var oContext = oView.getModel("minibar").createBindingContext("/" +
+                oArgs.path);
+            oView.setBindingContext(oContext, "minibar", {expand: 'CategoryToProductsNav'});
+        },
+
+
         onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
