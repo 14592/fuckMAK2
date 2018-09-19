@@ -55,7 +55,7 @@
                 </columns>
 
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem type="Navigation" press="onItemPress">
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
                             <ObjectNumber number="{= parseFloat(${minibar>Price})}" unit=" {minibar>Currency}" />

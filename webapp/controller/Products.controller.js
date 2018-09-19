@@ -1,17 +1,15 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator",
-], function (Controller, History, Filter, FilterOperator) {
+], function (Controller, History) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
 
-        onInit: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
-                this);
-        },
+        // onInit: function () {
+        //     var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        //     oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
+        //         this);
+        // },
 
         onUpdateFinished: function(oEvent){
             var oI18N = this.getView().getModel("i18n").getResourceBundle();
@@ -22,9 +20,9 @@ sap.ui.define([
                 var oItem = aItem[i].getBindingContext("minibar").getObject();
                 var sPstock = oItem.Pstock;
                 if (sPstock === "X"){
-                    this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.Available"));
+                    //this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.Available"));
                 }else {
-                    this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.NotAvailable"));
+                    //this.getView().byId("shoppingcartTotalPrice").setText(oI18N.getText("products.NotAvailable"));
                 }
             }
 
@@ -36,50 +34,6 @@ sap.ui.define([
             oRouter.navTo("detail", {
                 path: oItem.getBindingContext("minibar").getPath().substr(1)
             });
-        },
-
-        _onObjectMatched: function (oEvent) {
-
-            var oView = this.getView();
-            var oTable = oView.byId("TableProducts");
-            //var mParams = oEvent.getParameters();
-            var oBinding = oTable.getBinding("items");
-
-            var oArgs = oEvent.getParameter("arguments");
-            var sPath = oArgs.path;
-            var sCategory = sPath.match(/(?=\d).*(?=')/);
-
-
-            oBinding.filter(new sap.ui.model.Filter("Category", sap.ui.model.FilterOperator.EQ, sCategory));
-
-
-            // var aFilters = [];
-            // for (var i = 0, l = mParams.filterItems.length; i < l; i++) {
-            //     var oItem = mParams.filterItems[i];
-            //     var aSplit = oItem.getKey().split("___");
-            //     var sPath = aSplit[0];
-            //     var vOperator = aSplit[1];
-            //     var vValue1 = aSplit[2];
-            //     var vValue2 = aSplit[3];
-            //     var oFilter = new sap.ui.model.Filter(sPath, vOperator, vValue1, vValue2);
-            //     aFilters.push(oFilter);
-            // }
-            // oBinding.filter(aFilters);
-        },
-
-        onFilter : function(oEvent) {
-            var sQuery = oEvent.getParameter('query');
-            var oList = this.getView().byId("productList");
-            var oBinding = oList.getBinding("items");
-
-            if (sQuery) {
-                var aFilter = []
-                aFilter.push(new Filter("Category", FilterOperator.Contains, sQuery));
-                oBinding.filter(aFilter);
-                alert(oBinding.getLength());
-            } else {
-                oBinding.filter([]);
-            }
         },
 
         onNavButtonPress: function () {
