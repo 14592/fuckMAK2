@@ -4,12 +4,13 @@ sap.ui.define([
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Main", {
         onItemPress: function (oEvent) {
-            var oItem = oEvent.getSource();
+            var oCategory = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("detail", {
-                path: oItem.getBindingContext("minibar").getPath().substr(1)
-            });
+            oRouter.navTo("products", {path: oCategory.getBindingContext("minibar").getPath().substr(1)});
+        },
+        onSCButtonPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
         }
-
     })
 });

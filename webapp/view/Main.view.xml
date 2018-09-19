@@ -3,20 +3,21 @@
         xmlns="sap.m"
         controllerName='de.nak.minibar.controller.Main'>
     <Page title="{i18n>main.PageTitle}">
+        <headerContent>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+        </headerContent>
         <content>
             <List headerText="{i18n>main.headerText}"
-                  items="{ path: 'minibar>/PRODUCTSet'}"
+                  items="{ path: 'minibar>/CATEGORYSet'}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>mainPageText}" level="H2"/>
+                        <Title text="{i18n>main.PageText}" level="H2"/>
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
-                                  description="{minibar>Description}"
-                                  info="{minibar>Price} {minibar>Currency}"
 
                                   press="onItemPress"
                                   type="Navigation"

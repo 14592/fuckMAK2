@@ -59,6 +59,16 @@
           "pattern": "detail/{path}",
           "name": "detail",
           "target": "detail"
+        },
+        {
+          "pattern": "products/{path}",
+          "name": "products",
+          "target": "products"
+        },
+        {
+          "pattern": "shoppingcart/{path}",
+          "name": "shoppingcart",
+          "target": "shoppingcart"
         }
       ],
       "targets": {
@@ -67,6 +77,12 @@
         },
         "detail": {
           "viewName": "Detail"
+        },
+        "products": {
+          "viewName": "Products"
+        },
+        "shoppingcart": {
+          "viewName": "Shoppingcart"
         }
       }
     },
@@ -80,7 +96,8 @@
       "minibar":{
         "dataSource": "minibarService",
         "settings":{
-          "useBatch": false
+          "useBatch": false,
+          "defaultBindingMode": "OneWay"
         }
       }
     }
