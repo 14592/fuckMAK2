@@ -1,10 +1,11 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-], function (Controller, History) {
+    '../model/formatter'
+], function (Controller, History, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
-
+        formatter: formatter,
         onSCButtonPress: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})

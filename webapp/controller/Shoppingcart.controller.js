@@ -1,10 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/m/MessageBox"
-], function (Controller, History, MessageBox) {
+    "sap/m/MessageBox",
+    '../model/formatter'
+], function (Controller, History, MessageBox, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Shoppingcart", {
+        formatter: formatter,
 
         onUpdateFinished: function(){
             var oTable = this.getView().byId("shoppingcartTable");
@@ -16,7 +18,8 @@ sap.ui.define([
                 var iPrice = parseFloat(oItem.Price);
                 iTotalPrice = iTotalPrice + iPrice;
             }
-            this.getView().byId("shoppingcartTotalPrice").setText(iTotalPrice);
+            this.getView().byId("shoppingcartTotalPrice").setNumber([formatter.price(iTotalPrice)]);
+            this.getView().byId("shoppingcartTotalPrice").setUnit("EUR");
         },
 
          // Funktion zum Löschen eines Produktes
