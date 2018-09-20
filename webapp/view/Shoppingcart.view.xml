@@ -21,6 +21,7 @@
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"
+                   noDataText="{i18n>shoppingcart.SCEmpty}"
                    updateFinished="onUpdateFinished"
                    width="auto">
 
@@ -39,7 +40,7 @@
                             <Text text="{i18n>shoppingcart.TotalPrice}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </footer>
                     </Column>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
                             <Text text="{i18n>products.Price}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>

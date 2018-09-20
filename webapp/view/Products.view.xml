@@ -19,6 +19,7 @@
                             sorter: { path: 'Name'}}"
                    growing="true"
                    growingThreshold="100"
+                   noDataText="{i18n>products.NoProducts}"
                    enableBusyIndicator="true"
                    width="auto">
 
