@@ -10,7 +10,8 @@
         </headerContent>
         <content>
             <List headerText="{i18n>main.headerText}"
-                  items="{ path: 'minibar>/CATEGORYSet'}"
+                  items="{ path: 'minibar>/CATEGORYSet',
+                            sorter: { path: 'minibar>Name'}}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
