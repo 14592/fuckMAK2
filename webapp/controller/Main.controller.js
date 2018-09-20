@@ -8,7 +8,7 @@ sap.ui.define([
 
         //ausgewählte Kategorie bestimmen und im Pfad mitgeben
         //zur Produktseite navigieren
-        onItemPress: function (oEvent) {
+        onCategoryPress: function (oEvent) {
             var oCategory = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("products", {path: oCategory.getBindingContext("minibar").getPath().substr(1)});

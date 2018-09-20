@@ -21,7 +21,7 @@
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
-                                  press="onItemPress"
+                                  press="onCategoryPress"
                                   type="Navigation"
                 />
             </List>

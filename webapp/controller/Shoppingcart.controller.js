@@ -11,13 +11,13 @@ sap.ui.define([
         //formatter Aufruf
         formatter: formatter,
 
-        //nach dem laden der Warenkorbtabelle alle Produktpreise auslesen, addieren
+        //nach dem Laden der Warenkorbtabelle alle Produktpreise auslesen, addieren
         //und in den footer der Tabelle schreiben
         onUpdateFinished: function(){
             var oTable = this.getView().byId("shoppingcartTable");
-            var l = oTable.getItems().length;
+            var sLength = oTable.getItems().length;
             var iTotalPrice = 0;
-            for(var i = 0; i < l; i++){
+            for(var i = 0; i < sLength; i++){
                 var aItem = oTable.getItems(i);
                 var oItem = aItem[i].getBindingContext("minibar").getObject();
                 var iPrice = parseFloat(oItem.Price);
