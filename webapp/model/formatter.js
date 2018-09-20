@@ -1,3 +1,5 @@
+//Autoren: Prahl, Knüppel
+
 sap.ui.define([
     'sap/ui/core/format/NumberFormat'
 ], function (NumberFormat) {
