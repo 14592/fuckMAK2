@@ -3,15 +3,16 @@
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
         controllerName='de.nak.minibar.controller.Main'>
     <Page title="{i18n>main.PageTitle}">
         <headerContent>
             <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
         <content>
-            <List headerText="{i18n>main.headerText}"
+            <List headerText="{i18n>main.HeaderText}"
                   items="{ path: 'minibar>/CATEGORYSet',
-                            sorter: { path: 'minibar>Name'}}"
+                            sorter: { path: 'Name'}}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
@@ -22,9 +23,14 @@
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
                                   press="onCategoryPress"
-                                  type="Navigation"
-                />
+                                  type="Navigation"/>
             </List>
+
+            <f:SimpleForm layout="ResponsiveGridLayout">
+                <f:content>
+                    <Text id="Description" text="{i18n>app.Description}" enabled="false" />
+                </f:content>
+            </f:SimpleForm>
         </content>
     </Page>
 </mvc:View>

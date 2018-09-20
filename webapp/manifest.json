@@ -5,8 +5,8 @@
     "id": "de.nak.minibar",
     "type": "application",
     "i18n": "i18n/i18n.properties",
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
+    "title": "{{app.Title}}",
+    "description": "{{app.Description}}",
     "applicationVersion": {
       "version": "1.0.0"
     },

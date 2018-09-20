@@ -22,10 +22,10 @@
 
             <f:SimpleForm layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label text="{i18n>detail.Price}" labelFor="inputPrice"/>
-                    <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
-                    <Label text="{i18n>detail.Description}" labelFor="textareaDescription" />
-                    <Text id="textareaDescription" text="{minibar>Description}" enabled="false" />
+                    <Label text="{i18n>detail.Price}" labelFor="Price"/>
+                    <ObjectNumber id="Price" number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
+                    <Label text="{i18n>detail.Description}" labelFor="Description" />
+                    <Text id="Description" text="{minibar>Description}" enabled="false" />
                     <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />
                     <Select id="inputAmount" selectedKey="1">
                         <core:Item key="1" text="1"/>
@@ -39,8 +39,8 @@
                         <core:Item key="9" text="9"/>
                         <core:Item key="10" text="10"/>
                     </Select>
-                    <Label text="" labelFor="inputSCButton"/>
-                    <Button id="inputSCButton" icon="sap-icon://cart-4" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
+                    <Label text="" labelFor="SCButton"/>
+                    <Button id="SCButton" icon="sap-icon://cart-4" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
             </f:SimpleForm>
         </content>
