@@ -1,29 +1,48 @@
+<!--Autoren: Prahl, Knüppel-->
+
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
         xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
         controllerName='de.nak.minibar.controller.Detail'>
-    <Page
-            title="{i18n>main.PageTitle}"
+
+    <Page   title="{i18n>main.PageTitle}"
             showNavButton="true"
             navButtonPress="onNavButtonPress">
+
         <headerContent>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
+
         <content>
             <Toolbar>
                 <Title text="{minibar>Name}" level="H1"/>
             </Toolbar>
 
-
-
-<!--            <f:SimpleForm
-                    layout="ResponsiveGridLayout">
+            <f:SimpleForm layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label text="{minibar>Price}" level="H3"/>
-                    <TextArea id="inputDate" value="{minibar>Description}" enabled="false" height="auto"/>
+                    <Label text="{i18n>detail.Price}" labelFor="Price"/>
+                    <ObjectNumber id="Price" number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
+                    <Label text="{i18n>detail.Description}" labelFor="Description" />
+                    <Text id="Description" text="{minibar>Description}" enabled="false" />
+                    <Label text="{i18n>detail.Amount}" labelFor="inputAmount" />
+                    <Select id="inputAmount" selectedKey="1">
+                        <core:Item key="1" text="1"/>
+                        <core:Item key="2" text="2"/>
+                        <core:Item key="3" text="3"/>
+                        <core:Item key="4" text="4"/>
+                        <core:Item key="5" text="5"/>
+                        <core:Item key="6" text="6"/>
+                        <core:Item key="7" text="7"/>
+                        <core:Item key="8" text="8"/>
+                        <core:Item key="9" text="9"/>
+                        <core:Item key="10" text="10"/>
+                    </Select>
+                    <Label text="" labelFor="SCButton"/>
+                    <Button id="SCButton" icon="sap-icon://cart-4" text="{i18n>shoppingcart.AddToShoppingcart}" press="onAddToSCPress" float="right"/>
                 </f:content>
-            </f:SimpleForm>-->
+            </f:SimpleForm>
         </content>
     </Page>
 </mvc:View>

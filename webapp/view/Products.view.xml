@@ -1,3 +1,5 @@
+<!--Autoren: Prahl, Knüppel-->
+
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
@@ -7,20 +9,23 @@
           showNavButton="true"
           navButtonPress="onNavButtonPress">
         <headerContent>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
         <content>
 
-            <Table headerText="{i18n>products.HeaderText}"
-                   items="{ path: 'minibar>/PRODUCTSet'}"
+            <Table id="productsTable"
+                   headerText="{i18n>products.HeaderText}"
+                   items="{ path: 'minibar>CategoryToProductsNav',
+                            sorter: { path: 'Name'}}"
                    growing="true"
                    growingThreshold="100"
+                   noDataText="{i18n>products.NoProducts}"
                    enableBusyIndicator="true"
                    width="auto">
 
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>products.PageText}" level="H2"/>
+                        <Title text="{i18n>products.PageText}" level="H1"/>
                     </Toolbar>
                 </headerToolbar>
 
@@ -39,7 +44,7 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
-                            <Text text="{i18n>products.ProductAvailable}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="{i18n>products.Availability}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
                         <footer/>
                     </Column>
@@ -49,8 +54,8 @@
                     <ColumnListItem type="Navigation" press="onItemPress">
                         <cells>
                             <ObjectIdentifier title="{minibar>Name}" />
-                            <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
-                            <Text text="{minibar>Pstock}" />
+                            <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
+                            <Text text="{path : 'minibar>Pstock',	formatter : '.formatter.availableText'}" />
                         </cells>
                     </ColumnListItem>
                 </items>

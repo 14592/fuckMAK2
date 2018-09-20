@@ -1,12 +1,39 @@
+//Autoren: Prahl, Keller, Knüppel
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
-    "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, History, Filter, FilterOperator) {
+    '../model/formatter'
+], function (Controller, History, formatter) {
     "use strict";
     return Controller.extend("de.nak.minibar.controller.Products", {
+        //formatter Aufruf
+        formatter: formatter,
 
+        //initialisieren der Funktion _onObjectMatched
+        onInit: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
+                this);
+        },
+
+        //alle Produkte der ausgewählten Kategorie anzeigen
+        _onObjectMatched: function (oEvent) {
+            var oArgs = oEvent.getParameter("arguments");
+            var oView = this.getView();
+            var oContext = oView.getModel("minibar").createBindingContext("/" +
+                oArgs.path);
+            oView.setBindingContext(oContext, "minibar", {expand: 'CategoryToProductsNav'});
+        },
+
+        //zum Warenkorb navigieren
+        onSCButtonPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
+        },
+
+        //ausgewähltes Produkt bestimmen und im Pfad mitgeben
+        //zur Detailseite navigieren
         onItemPress: function (oEvent) {
             var oItem = oEvent.getSource();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -15,61 +42,17 @@ sap.ui.define([
             });
         },
 
-        onInit: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched,
-                this);
-        },
-        _onObjectMatched: function (oEvent) {
-            var oArgs = oEvent.getParameter("arguments");
-            var path = oArgs.path;
-            var result = path.match(/(?=\d).*(?=')/);
-
-            //var oList = this.getView().byId("productList");
-            // var oBinding = oList.getBinding("items");
-            //var aFilter = [];
-            //aFilter.push(new Filter('Category', FilterOperator.Equals, result));
-
-            var oView = this.getView();
-            var oContext = oView.getModel("minibar").createBindingContext("/" +
-                oArgs.path);
-            oView.setBindingContext(oContext, "minibar");
-
-
-            //oBinding.filter(aFilter);
-        },
-
-        onFilter : function(oEvent) {
-            var sQuery = oEvent.getParameter('query');
-            var oList = this.getView().byId("productList");
-            var oBinding = oList.getBinding("items");
-
-            if (sQuery) {
-                var aFilter = []
-                aFilter.push(new Filter("Category", FilterOperator.Contains, sQuery));
-                oBinding.filter(aFilter);
-                alert(oBinding.getLength());
-            } else {
-                oBinding.filter([]);
-            }
-        },
-
+        //in der Historie zurückgehen
+        //falls keine Historie vorhanden ist, auf die main Seite zurückkehren
         onNavButtonPress: function () {
-            // Check if there is UI5 history
             var history = History.getInstance();
             var previousHash = history.getPreviousHash();
-
-            // If UI5 recorded previous pages, siply go back in history...
             if (previousHash !== undefined) {
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("main", {}, true);
             }
-        },
-        onSCButtonPress: function (evt) {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("shoppingcart", {path:"SHOPPINGCARTSet"})
-    }
+        }
     })
 });

@@ -1,20 +1,28 @@
+<!--Autoren: Prahl, Knüppel-->
+
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
+        xmlns:core="sap.ui.core"
         controllerName='de.nak.minibar.controller.Shoppingcart'>
      <Page title="{i18n>main.PageTitle}"
-          showNavButton="true"
-          navButtonPress="onNavButtonPress">
-         <headerContent>
-             <Button text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
-         </headerContent>
-        <content>
+           showNavButton="true"
+           navButtonPress="onNavButtonPress">
 
-            <Table headerText="{i18n>products.HeaderText}"
-                   items="{ path: 'minibar>/SHOPPINGCARTSet'}"
+         <headerContent>
+             <Button icon="sap-icon://cart-approval" text="{i18n>shoppingcart.OrderButton}" press="onOrderButtonPress"/>
+         </headerContent>
+
+        <content>
+            <Table id="shoppingcartTable"
+                   headerText="{i18n>products.HeaderText}"
+                   items="{ path: 'minibar>/SHOPPINGCARTSet',
+                            sorter: { path: 'Matname'}}"
                    growing="true"
                    growingThreshold="100"
                    enableBusyIndicator="true"
+                   noDataText="{i18n>shoppingcart.SCEmpty}"
+                   updateFinished="onUpdateFinished"
                    width="auto">
 
                 <headerToolbar>
@@ -28,13 +36,17 @@
                         <header>
                             <Text text="{i18n>products.ProductName}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
-                        <footer/>
+                        <footer>
+                            <Text text="{i18n>shoppingcart.TotalPrice}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </footer>
                     </Column>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
                             <Text text="{i18n>products.Price}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
-                        <footer/>
+                        <footer>
+                            <ObjectNumber id="shoppingcartTotalPrice" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </footer>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
                         <header>
@@ -43,9 +55,7 @@
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
-                        <header>
-                            <Text text="{i18n>shoppingcart.Remove}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                        </header>
+                        <header/>
                         <footer/>
                     </Column>
                 </columns>
@@ -54,33 +64,24 @@
                     <ColumnListItem>
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
-                            <ObjectNumber number="{minibar>Price}" unit=" {minibar>Currency}" />
-                            <Text text="{minibar>Amount}" />
-                            <Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
+                            <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
+                            <Select change="onChangeProductAmount" selectedKey="{= parseInt(${minibar>Amount})}">
+                                <core:Item key="1" text="1"/>
+                                <core:Item key="2" text="2"/>
+                                <core:Item key="3" text="3"/>
+                                <core:Item key="4" text="4"/>
+                                <core:Item key="5" text="5"/>
+                                <core:Item key="6" text="6"/>
+                                <core:Item key="7" text="7"/>
+                                <core:Item key="8" text="8"/>
+                                <core:Item key="9" text="9"/>
+                                <core:Item key="10" text="10"/>
+                            </Select>
+                            <Button icon="sap-icon://delete" text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem" />
                         </cells>
                     </ColumnListItem>
                 </items>
-
             </Table>
-
-
-            <!--            <List headerText="{i18n>shoppingcard.HeaderText}"
-                  items="{ path: 'minibar>/SHOPPINGCARTSet'}"
-                  growing="true"
-                  growingThreshold="100"
-                  enableBusyIndicator="true">
-                <headerToolbar>
-                    <Toolbar>
-                        <Title text="{i18n>shoppingcart.PageText}" level="H2"/>
-                    </Toolbar>
-                </headerToolbar>
-                <StandardListItem title="{minibar>Matname}"
-                                  info="{minibar>Price} {minibar>Currency}"
-                                  description="{minibar>Amount}">
-                    &lt;!&ndash;<Button text="{i18n>shoppingcart.DeleteItem}" press="deleteSCItem"/>&ndash;&gt;
-                </StandardListItem>
-            </List>-->
         </content>
     </Page>
-
 </mvc:View>

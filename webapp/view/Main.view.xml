@@ -1,28 +1,36 @@
+<!--Autoren: Prahl, Knüppel-->
+
 <mvc:View
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
         controllerName='de.nak.minibar.controller.Main'>
     <Page title="{i18n>main.PageTitle}">
         <headerContent>
-            <Button text="{i18n>main.SCButton}" press="onSCButtonPress"/>
+            <Button icon="sap-icon://cart" text="{i18n>main.SCButton}" press="onSCButtonPress"/>
         </headerContent>
         <content>
-            <List headerText="{i18n>main.headerText}"
-                  items="{ path: 'minibar>/CATEGORYSet'}"
+            <List headerText="{i18n>main.HeaderText}"
+                  items="{ path: 'minibar>/CATEGORYSet',
+                            sorter: { path: 'Name'}}"
                   growing="true"
                   growingThreshold="100"
                   enableBusyIndicator="true">
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="{i18n>main.PageText}" level="H2"/>
+                        <Title text="{i18n>main.PageText}" level="H1"/>
                     </Toolbar>
                 </headerToolbar>
                 <StandardListItem title="{minibar>Name}"
-
-                                  press="onItemPress"
-                                  type="Navigation"
-                />
+                                  press="onCategoryPress"
+                                  type="Navigation"/>
             </List>
+
+            <f:SimpleForm layout="ResponsiveGridLayout">
+                <f:content>
+                    <Text id="Description" text="{i18n>app.Description}" enabled="false" />
+                </f:content>
+            </f:SimpleForm>
         </content>
     </Page>
 </mvc:View>
