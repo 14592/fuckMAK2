@@ -63,7 +63,7 @@
                         <cells>
                             <ObjectIdentifier title="{minibar>Matname}" />
                             <ObjectNumber number="{path : 'minibar>Price',	formatter : '.formatter.price'}" unit=" {minibar>Currency}" />
-                            <Select change="onChangeProductAmount" selectedKey="{= parseFloat(${minibar>Amount})}">
+                            <Select change="onChangeProductAmount" selectedKey="{= parseInt(${minibar>Amount})}">
                                 <core:Item key="1" text="1"/>
                                 <core:Item key="2" text="2"/>
                                 <core:Item key="3" text="3"/>
