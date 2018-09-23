@@ -107,7 +107,7 @@ sap.ui.define([
                             },
                             error: function (oError) {
                                 var sResponseBody = oError.response.body;
-                                var aMessage = sResponseBody.match(/.*\<message.*\>([a-zA-Z\s\.]*)\<\/message\>.*/);
+                                var aMessage = sResponseBody.match(/.*\<message.*\>(.*)\<\/message\>/);
                                 var sMessage = aMessage[1];
                                 MessageBox.error(sMessage);
                             }

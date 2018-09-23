@@ -15,7 +15,7 @@
 
         <content>
             <Table id="shoppingcartTable"
-                   headerText="{i18n>products.HeaderText}"
+                   headerText="{i18n>shoppingcart.HeaderText}"
                    items="{ path: 'minibar>/SHOPPINGCARTSet',
                             sorter: { path: 'Matname'}}"
                    growing="true"
